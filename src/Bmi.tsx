@@ -5,7 +5,7 @@ function Bmi() {
   const [weight, setWeight] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
   const [bmi, setBmi] = useState<number>();
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<string>();
 
   const calculateBmi = () => {
     if (weight <= 0 || height <= 0) {

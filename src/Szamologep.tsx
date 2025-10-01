@@ -4,7 +4,7 @@ import './App.css'
 function Szamologep() {
   const [num1, setNum1] = useState<number>(0);
   const [num2, setNum2] = useState<number>(0);
-  const [operator, setOperator] = useState<String>();
+  const [operator, setOperator] = useState<String>("+");
   const [result, setResult] = useState<number>();
   let res;
   const calculate = () => {
