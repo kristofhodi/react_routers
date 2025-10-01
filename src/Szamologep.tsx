@@ -1,31 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function Szamologep() {
   const [num1, setNum1] = useState<number>(0);
   const [num2, setNum2] = useState<number>(0);
-  const [operator, setOperator] = useState<String>("+");
+  const [operator, setOperator] = useState<string>("+");
   const [result, setResult] = useState<number>();
-  let res;
-  const calculate = () => {
-      if (operator == "+") {
-        res = Number(num1) + Number(num2);
-        setResult(res);
-      }
-      else if (operator == "-") {
-        res = Number(num1) - Number(num2);
-        setResult(res);
-      }
-      else if (operator == "*") {
-        res = Number(num1) * Number(num2);
-        setResult(res);
-      }
-      else if (operator == "/") {
-        res = Number(num1) / Number(num2);
-        setResult(res);
-      }
-        
-  };
+
+  useEffect(() => {
+    if (operator === "+") setResult(num1 + num2);
+    else if (operator === "-") setResult(num1 - num2);
+    else if (operator === "*") setResult(num1 * num2);
+    else if (operator === "/") setResult(num1 / num2);
+  }, [num1, num2, operator]);
+
+  //   const calculate = () => {
+  //   if (operator === "+") setResult(num1 + num2);
+  //   else if (operator === "-") setResult(num1 - num2);
+  //   else if (operator === "*") setResult(num1 * num2);
+  //   else if (operator === "/") setResult(num1 / num2); 
+      
+  // };
   return (
       <>
       <div>
@@ -38,7 +33,6 @@ function Szamologep() {
                   <option value="/">/</option>
               </select>
               <input type="number" id="num2" onChange={(e) => setNum2(Number(e.target.value))} />
-              <button onClick={calculate}>Számolás</button>        
         {result && (
           <p>Eredmény: {result}</p>
         )}
